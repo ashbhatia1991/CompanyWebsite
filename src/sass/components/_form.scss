@@ -1,0 +1,166 @@
+.form{
+
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+
+        @include respond(tab-port){
+          margin-bottom: 0;
+        }
+    }
+
+    &__input {
+
+        font-size:1.5rem;
+        color:inherit;
+        font-family: inherit;
+        padding: 1.5rem 2rem;
+        background-color: $style-color-white;
+        border-radius: .2rem;
+        border:none;
+        display: block;
+        width: 90%;        
+        border-bottom: .3rem solid transparent;
+        transition: all .3s;
+
+        @include respond(tab-port){
+          padding: 1rem 1.5rem;
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 1rem 2rem rgba($style-color-black, .1);
+          border-bottom: .3rem solid $color-primary;
+        }
+
+        &:focus:invalid {
+          border-bottom: .3rem solid $color-secondary-dark;
+        }
+
+        &::-webkit-input-placeholder {
+          color:$color-grey-dark-2;
+        }
+    }
+
+    &__label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-left:2rem;
+      margin-top:.7rem;
+      display: block;
+      transition: all .3s;      
+    }
+
+    &__input:placeholder-shown + &__label{  // here + is denotes to sibling element which is under .form div
+      // here form__input and form__label are 2 sibling so in order to apply formatting we apply 
+      // + for just adjacent element 
+      // ~ for general element   
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4rem);
+    }
+
+    // this part is for radio button customization
+    &__radio-group {
+      width:49%;
+      display: inline-block;
+      
+      @include respond(tab-port){
+        width: 45%;
+      }
+    }
+
+    &__radio-input {
+      visibility: hidden;
+    }
+
+    &__radio-label {
+      font-size:$default-font-size;
+      cursor: pointer;
+      padding-left: 4.5rem;
+      position:relative;
+    }
+
+    // here we create our custom radio button using <span> tag with .form__radio-button class..
+    &__radio-button {
+      position: absolute;
+      top:-.4rem;
+      left:0;
+      display: inline-block;
+      height: 3rem;
+      width: 3rem;
+      
+      border: .5rem solid $color-cyan;
+      border-radius: 50%;
+
+    
+      &::after {
+        position: absolute;
+        content: "";
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        height: 1.3rem;
+        width: 1.3rem;
+        display: block;
+        background-color: $color-cyan;
+        border-radius: 50%;
+        opacity: 0;        
+      }
+    }
+
+    &__radio-input:checked ~ &__radio-label &__radio-button:after {
+      opacity: 1;      
+      
+    }
+
+    // this part is for checkbox customization..
+    &__checkbox-group {
+      width: 50%;
+      display: inline;
+      margin-right: 4.5rem;
+    }
+    
+    &__checkbox-input {
+
+      visibility: hidden;
+    }
+
+    &__checkbox-label {
+      
+      font-size:$default-font-size;
+      cursor: pointer;
+      padding-left: 4.5rem;
+      position:relative;       
+
+    }
+
+    // here we create our custom checkbox button using <span> tag with .form__checkbox-button class
+    &__checkbox-button {
+      position: absolute;
+      top:0;
+      left:0;
+      display: inline-block;
+      height: 2.5rem;
+      width: 2.5rem;
+      border: .5rem solid $color-primary;
+      border-radius:.3rem;
+    
+      &::after {
+        position: absolute;
+        content: "";
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        height: .95rem;
+        width: .95rem;
+        display: block;
+        background-color: $color-primary;
+        border-radius: .3rem;
+        opacity: 0;
+      }
+    }
+
+    &__checkbox-input:checked + &__checkbox-label &__checkbox-button:after {
+      opacity: 1;
+    }
+}

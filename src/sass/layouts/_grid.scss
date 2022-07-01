@@ -1,0 +1,77 @@
+.row {
+  max-width: $grid-width;    
+  margin: 0 auto;    
+
+  @include respond(tab-port) {
+      max-width:50rem;
+  }
+
+  // @include respond(phone) {
+  //     max-width:50rem;
+  // }
+
+  // &:first-child {
+  //margin-top: 4rem;
+  // }
+  // this will set rows bottom margin to 80px or 8rem
+  //except last child or last row of the section
+  &:not(:last-child) {
+      margin-bottom: $grid-gutter-vertical;
+
+      @include respond(tab-port) {
+          margin-bottom: $grid-gutter-vertical-small;
+      }        
+  }
+
+  @include Mx_GridClearfix; // here we use mixin with clearfix to resolve same height 0 conflicts when use float.
+  
+  // attribute which defines customization of properties of particular class,element etc...
+  // here we select those classes which are started from 'col-'
+  // Note: 1) ^ -> is use for selection from starting.
+  //       2) $ -> is use for selection from Ending.
+  //       3) * -> is use for selection anywhere.
+
+  [class^="col-"] {        
+      float: left;        
+      // padding: 20px 10px;
+
+      &:not(:last-child) {
+          margin-right: $grid-gutter-horizontal;
+
+          @include respond(tab-port) {
+              margin-right: 0;
+              margin-bottom: $grid-gutter-vertical-small;
+          }
+          
+      }   
+      @include respond(tab-port) {
+              width: 100% !important;
+          }     
+  } // end of attribute
+
+  .col-1-of-2 {
+      // in css when we use vaiables in native calc() function then we need to use
+      // #{$varialbeName} to use...
+      width: calc((100% - #{$grid-gutter-horizontal}) / 2);
+  }
+
+  .col-1-of-3 {
+      width: calc((100% - 2 * #{$grid-gutter-horizontal}) / 3);
+  }
+
+  .col-1-of-4 {
+      width: calc((100% - 3 * #{$grid-gutter-horizontal}) / 4);
+  }
+
+  .col-2-of-3 {
+      width: calc(2 * ((100% - 2 * #{$grid-gutter-horizontal}) / 3) + #{$grid-gutter-horizontal});
+  }
+
+  .col-2-of-4 {
+      width: calc(2 * ((100% - 3 * #{$grid-gutter-horizontal}) / 4) + #{$grid-gutter-horizontal});
+  }
+
+  .col-3-of-4 {
+      width: calc(3 * ((100% - 3 * #{$grid-gutter-horizontal}) / 4) + (2 * #{$grid-gutter-horizontal}));
+  }
+}

@@ -1,0 +1,125 @@
+.popup {
+    position: fixed;    
+    top:0;
+    left: 0;
+    background-color: rgba($style-color-black, .85);
+    height: 100vh;
+    width: 100%;
+    z-index: 4000;    
+    opacity: 0;
+    visibility: hidden;    
+    transition: all .3s;
+    -webkit-backdrop-filter: blur(1rem);
+    backdrop-filter: blur(1rem);
+    background-color: rgba($style-color-black, .3);
+
+    // this is degradation purpose if today's browser does'nt support then using 
+    // this @supports we can force to support these attributes to to our selector..
+    @supports (-webkit-backdrop-filter: blur(1rem)) or (backdrop-filter: blur(1rem)) {
+      -webkit-backdrop-filter: blur(1rem);
+      backdrop-filter: blur(1rem);
+      background-color: rgba($style-color-black, .3);
+    }
+
+  &__content{
+    @include AbsoluteCenter;    
+    width: 75%;    // widht is set according the parent div width i.e 100%..
+    background-color: $style-color-white;
+    box-shadow: 0 2rem 4rem rgba($style-color-black, .2);
+    display: table;
+    border-radius: .3rem;
+    //overflow: hidden;
+    transform: translate(-50%, -50%) scale(.5); // here we call transform property twice, so this one apply to 
+                                                // to element and earlier one will not apply. 
+    transition: all .5s .2s;
+  }
+
+  &__left {
+      width: 33.33333%;
+      // display:table-cell property is use for align the boxes in equal height
+      // which is not possible with display:block or inline-block case
+      // and main important thing to remember whenever we use this property it's parent div or element 
+      // property always set to display:table otherwise this display:table-cell property will not work in 
+      // child div(here)...
+      display: table-cell;
+
+  }
+
+  &__image {
+      display:table-cell;
+      width: 100%;
+      
+      @include respond(tab-land){
+       height: 25.5rem;  
+      }
+
+      @include respond(tab-port){
+        height: 26rem;  
+       }
+
+       @include respond(phone){
+        height: 31.5rem;  
+       }
+  }
+
+  &__right {
+      width: 66.66667%;
+      // display:table-cell property is use for align the boxes in equal height
+      // which is not possible with display:block or inline-block case
+      // and main important thing to remember whenever we use this property it's parent div or element 
+      // property always set to display:table otherwise this display:table-cell property will not work in 
+      // child div(here)...
+      display: table-cell;
+      vertical-align: middle;
+      padding:3rem 5rem;
+  }
+
+  &__text {    
+    font-size:1.4rem;
+    color:$style-color-grey;
+    // these column property is use for customize the paragraph or text in column way like in newspaper
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: .1rem solid $color-grey-light-2;
+    hyphens: auto;
+    margin-bottom: 4rem;
+
+  }
+
+  &__close {
+
+    &:link,
+    &:visited{
+      position: absolute;
+      color:$style-color-grey;
+      top:2.5rem;
+      right: 2.5rem;
+      display: inline-block;
+      text-decoration: none;
+      font-size: 3rem;
+      line-height: 1;           
+    }
+
+      &:hover {
+        color: $color-primary;
+      }
+  }
+
+  // this piece of code allows pop will show when user click
+  // on booking now button
+  &:target {
+    opacity: 1;
+    visibility: visible;
+
+  }
+
+  // this is same piece of code that is above we write
+  // but the only difference is that is will scale when
+  // it pop on the screen to orginal one.. 
+  &:target &__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); // this make popup large when click into button and load into webpage..
+  }
+
+
+}

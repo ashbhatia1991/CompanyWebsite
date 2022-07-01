@@ -1,0 +1,82 @@
+.story {
+    
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    background-color: rgba($style-color-white, .6);
+    width: 75%;
+    margin: 0 auto;
+    transform: skewX(-12deg);    
+
+    @include respond(phone){
+
+      width: 100%;
+      transform: skewX(0);
+      padding: 4rem;
+      padding-left: 5rem;
+    }
+
+    &__shape {
+        width:15rem;
+        height: 15rem;      
+        // this property is used for make texflow around shapes with 'shape-outside' and 'float' together.. 
+        -webkit-shape-outside: circle(50% at 50% 50%); 
+        float: left;
+        shape-outside: circle(50% at 50% 50%);
+        // now we wrap or make actual circle shape to the image using clip-path property...
+        clip-path: circle(50% at 50% 50%);
+        -webkit-clip-path: circle(50% at 50% 50%);
+        position: relative; 
+        transform: translateX(-3rem) skewX(12deg);        
+        overflow: hidden;
+
+        @include respond(phone){
+
+          transform: translateX(-3rem) skewX(0);        
+        }
+        
+    }
+
+    &__img {
+      position: absolute;
+      height:100%;      
+      transform: translateX(-4rem) scale(1.4);
+      transition: all .5s;
+    }
+
+    &__caption {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 1.7rem;
+      color: $style-color-white;
+      text-transform: uppercase;
+      text-align: center;
+      transform: skewX(12deg);
+      transform: translate(-50%, -50%);
+      transition: all .5s;
+      opacity: 0;
+
+      @include respond(phone){
+
+        transform: skewX(0);        
+      }
+    }
+
+    &__text{
+      transform: skewX(12deg);
+
+      @include respond(phone){
+
+        transform: skewX(0);        
+      }
+    }
+
+    &:hover &__caption {
+
+      transform: translate(-50%, -50%);    
+      opacity: 1;
+    }
+    
+    
+}

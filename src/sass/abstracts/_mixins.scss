@@ -1,0 +1,82 @@
+
+@mixin headingPrimaryPlaceholder($fontsize, $fontweight, $letterSpacing) {
+  display: block;
+  font-size: $fontsize;
+  font-weight: $fontweight;
+  letter-spacing: $letterSpacing;
+}
+
+@mixin bgColorWhite {
+  background-color: $style-color-white;
+}
+
+@mixin bgColorCyan {
+  background-color: #00a9ce;
+}
+
+@mixin OpacityandTransform {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+//creating extends which is common for same element
+@mixin HeaderButtonTextStyle ($transitionDelay) {
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all $transitionDelay;
+}
+
+// _grid.scss mixin with their properties...
+@mixin Mx_GridClearfix {
+  &::after {
+  content:"";
+  display:table;
+  clear:both;
+  }
+}
+
+@mixin AbsoluteCenter {
+  position:absolute;    
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);    
+}
+
+
+// MEDIA QUERY MANAGER
+
+// phone         : 0-600px
+// tab-port      : 600-900px
+// tab-land      : 900-1200px
+// [1200-1800]px : by default and mostly website work in this format(Normal desktop)
+// Big-desktop   : 900-1200px
+
+// $breakpoint argument choices:
+// -phone
+// -tab-port
+// -tab-land
+// -big-desktop
+
+// Note: 1em  = 16px; in @media query we use 'em' instead of pixel and not 'rem'
+//       1rem = 10px
+// note: min-width: is use for minimum width and is below it is for big desktop whose layout is 
+// more than 1800px plus so we use min-width not max-width..
+
+// @content - is the actual content which we mention in actual element and we mention
+// it when we call this mixin as a placeholder in thier respective palces..
+
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+      @media only screen and (max-width:37.5em) { @content };// is equal 600px; 600/16 = 37.5em 
+  }
+  @if $breakpoint == tab-port {
+      @media only screen and (max-width:56.25em) { @content };// is equal 900px; 900/16 = 56.25em
+  }
+  @if $breakpoint == tab-land {
+      @media only screen and (max-width:75em) { @content };// is equal 1200px; 1200/16 = 75em
+  }
+  @if $breakpoint == big-desktop {
+      @media only screen and (min-width:112.5em) { @content };// is equal 1800px; + 1800/16 = 112.5em
+  }
+}

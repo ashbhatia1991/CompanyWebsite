@@ -1,0 +1,104 @@
+
+.btn {
+  &,
+  &:link,
+  &:visited {
+      font-size: $default-font-size;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.5rem 4rem;
+      @include HeaderButtonTextStyle(.2s);
+      position: relative;
+      border:none;
+      cursor:pointer;
+
+      @include respond(tab-port){
+          padding: 1.5rem 2rem;
+      }
+  }
+
+  &:hover {
+      transform: translateY(-.3rem); // button will uplift upward direction 
+      box-shadow: 0 1rem 2rem rgba($style-color-black, .2);
+
+      &::after {
+          transform: scaleX(1.4) scaleY(1.6);
+          opacity: 0;
+      }
+  }
+
+  &:active {
+      
+      transform: translateY(-.1rem); // button will downlift downward direction 
+      box-shadow: 0 .5rem 2rem rgba($style-color-black, .2);
+  }
+
+  &::after {
+      content: "";
+      @include HeaderButtonTextStyle(.4s);
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+  }
+
+  &--white {
+      color: $style-color-grey;
+      @include bgColorWhite;
+
+      &:after {
+          @include bgColorWhite;
+      }
+  }
+  &--cyan {
+    color: $style-color-white;
+
+    @include bgColorCyan;
+    background-image: linear-gradient(to right, #4bd5f4, #00a9ce);
+
+    &:after {
+        @include bgColorCyan;
+        background-image: linear-gradient(to right, #4bd5f4, #00a9ce);
+        color: #ffff;
+    }
+   }
+   &--green {
+      color: $style-color-white;
+      background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+      //background-color:  $color-primary;
+
+      &:after {
+          background-color:  $color-primary;
+      }
+  }
+  // Button animation starts
+  &--animation {
+      animation: moveInBottom .5s ease-out .75s; //animation-name animation-time animation-type animation delay
+      animation-fill-mode: backwards; // it automatically apply style to 0%  and it hides the previous animation..
+  }
+}
+
+.btn-text{
+  &:link,
+  &:visited{
+          font-size: $default-font-size;
+          text-decoration: none;
+          display: inline-block;
+          color: $color-cyan;
+          border-bottom: .1rem solid $color-cyan;
+          padding: .3rem;
+  }
+
+  &:hover{        
+          background-color: $color-cyan;
+          color: $style-color-white;
+          box-shadow: 0 1rem 2rem rgba($style-color-black, .15);
+          transform: translateY(-.2rem);
+  }
+  &:active{
+      box-shadow: 0 .5rem 2rem rgba($style-color-black, .15);
+          transform: translateY(0);
+  }
+}

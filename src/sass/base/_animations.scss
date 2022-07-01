@@ -1,0 +1,44 @@
+@keyframes moveInLeft {
+  0% {
+      opacity: 0;
+      transform: translateX(-10rem); // - (minus) moves animation to the Right 
+      transform: translateY(100px);  //moves animation to the Top 
+      transform: translateY(-100px); // - (minus) moves animation to the bottom 
+  }
+
+  80% {
+      transform: translateX(1rem);
+  }
+
+  100% {
+      @include OpacityandTransform;
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+      opacity: 0;
+      transform: translateX(10rem);  //moves animation to the left
+  }
+
+  80% {
+      transform: translate(-1rem);
+  }
+
+  100% {
+      @include OpacityandTransform;
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+      opacity: 0;
+      transform: translateY(3rem);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translate(0);
+  }
+}
+//Button animation Ends

@@ -1,0 +1,263 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+
+}
+
+.header {
+  height: 9vh;
+  
+
+}
+
+.main-section {
+  display: flex;
+  padding: 3rem;
+  position: relative;  
+}
+
+.ms-description {
+  display: flex;
+  flex: 0 0 50%;
+  flex-wrap: wrap;
+  padding: .5rem;
+  
+
+  // &>*:not(:last-child) {
+  //   margin-bottom: 2rem;
+  // }
+
+}
+
+
+// .ms-description__heading {
+//   font-size: 2rem;
+// }
+
+.ms-description__heading--blue {
+  
+  color: $color-cyan;
+  
+}
+
+// .ms-description__paragraph {
+//   color: #555;
+//   font-size: 2rem;
+// }
+
+.ms-description-email {
+  display: flex;
+  align-items: self-start;
+
+}
+
+.ms-description-email__input {
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #555;
+  border: none;
+  outline: #ccc solid .2rem;
+  padding: 2rem 16.3rem 2rem 2rem;
+  border-radius: 10rem;
+  margin-right: -13.5rem;
+  box-shadow: 0rem 1rem 5rem rgba(0, 0, 0, 0.078);
+  width: 94%;
+  transition: all .2s;
+
+}
+
+.ms-description-email__input:focus {
+  width: 100%;
+
+}
+
+.ms-description-email__input::-webkit-input-placeholder {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #bbb;
+  width: 100%;
+}
+
+.ms-description-email__button {
+  border: none;
+  outline: #ccc solid .2rem;
+  border-radius: 10rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  width: 13rem;
+  margin-top: .8rem;
+  height: 4.5rem;
+  background-color: #00a9ce;
+  color: #fff;
+}
+
+.ms-gallery {
+  display: flex;
+  flex: 1;
+}
+
+.ms-gallery__photo {
+  width: 100%;
+  display: block;
+}
+
+.ms-gallery__photo--animation {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+/* ANIMATION PART HERE */
+
+@keyframes up-down {
+  0% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+.section-about{
+  background-color:$color-grey-light-1;  
+  background-color: #f7f7f7;
+  padding: 15rem 0;
+  margin-top: 3rem;
+  transform: skewY(-7deg);
+
+  & > * {
+    transform: skewY(7deg);
+  }
+  @include respond(tab-port)
+  {
+    padding:25rem 0; 
+  }
+}
+
+.section-features{   
+    margin-top: -10rem;
+    padding: 15rem 0;
+    // background-image: linear-gradient(to right bottom, 
+    //                                   rgba($color-primary-light, .8), 
+    //                                   rgba($color-primary-dark, .8));                                    
+    background-image: linear-gradient(to right bottom, #4bd5f4b8, #00a8ce);
+    // this media query is only for image download purpose only for particular
+    // respected device according
+
+    // 1. for large media screen
+    @media (min-resolution:192dpi) and (min-width:112.5rem){
+      background-image: linear-gradient(to right bottom, 
+      rgba($color-primary-light, .8), 
+      rgba($color-primary-dark, .8)); 
+          
+
+    }
+    
+    background-size: cover; /*it helps fix the background image at absolute*/
+    transform: skewY(-7deg);  // it is equivalent to clip-path that cut the portion of the section...
+    
+
+    & > * {
+      transform: skewY(7deg);  // it is equivalent to clip-path that cut the portion of the section...
+    }
+
+    @include respond(tab-port)
+  {
+    padding:10rem 0; 
+  }
+ 
+}
+
+.section-tour{
+  margin-top:-10rem;
+  background-color:$color-grey-light-1;
+  padding:25rem 0 15rem 0; 
+
+  @include respond(tab-port)
+  {
+    padding:20rem 0 10rem 0; 
+  }
+}
+
+.technology_services {
+  padding: 0 13rem;
+  width: 100%;
+  height: 50%;
+}
+
+.section-story{  
+  position: relative;  
+  padding:10rem 0; 
+
+  @include respond(tab-port)
+  {
+    padding:10rem 0; 
+  }
+}
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, #4bd5f4b8, #00a8ce);
+
+  @include respond(tab-port)
+  {
+    padding:8rem 0; 
+  }
+}
+
+.book {
+
+    background-image: linear-gradient(105deg, rgba($style-color-black, .8) 0%,
+                                      rgba($style-color-black, 1) 50%,
+                                      transparent 50%),
+                                      url(../../images/social-media.jpg);
+
+    
+    background-size:contain; // this is equivalent to cover...
+    border-radius: .3rem;
+    box-shadow: 0 1.5rem 4rem rgba($style-color-black, .2);
+    
+    height: auto;
+
+    @include respond(big-desktop){    
+      background-image: linear-gradient(105deg, rgba($style-color-black, .8) 0%,
+      rgba($style-color-black, 1) 50%,
+      transparent 50%),
+      url(../../images/social-media.jpg);
+background-size: contain;
+      height: auto;
+
+    }
+
+   
+    @include respond(tab-land){    
+      background-image: linear-gradient(105deg, rgba($style-color-black, .8) 0%,
+                                      rgba($style-color-black, 1) 50%,
+                                      transparent 60%),
+                                      url(../../images/social-media.jpg);
+background-size: contain;
+      height: auto;
+
+    }
+
+    @include respond(phone){    
+      background-image: linear-gradient(105deg, rgba($style-color-black, .8) 0%,
+                                      rgba($style-color-black, 1) 50%,
+                                      transparent 60%),
+                                      url(../../images/social-media.jpg);
+background-size: contain;
+      height: auto;
+
+    }
+
+    &__form {
+      width: 50%;
+      padding:6rem;
+
+      @include respond(tab-port)
+      {
+        padding: 2rem;
+      }
+    }
+}
